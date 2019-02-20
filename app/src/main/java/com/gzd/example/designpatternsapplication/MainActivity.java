@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.gzd.example.designpatternsapplication.adapter.Client;
 import com.gzd.example.designpatternsapplication.adapter.ForTargetInterfaceAdapter;
 import com.gzd.example.designpatternsapplication.adapter.ResClass;
+import com.gzd.example.designpatternsapplication.facade.SuperTool;
+import com.gzd.example.designpatternsapplication.facade.SuperToolImpl;
 import com.gzd.example.designpatternsapplication.observer.Observale;
 import com.gzd.example.designpatternsapplication.observer.Observer;
 import com.gzd.example.designpatternsapplication.observer.RealObserver;
@@ -59,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         NewWebTool newWebTool = new NewWebTool(oldWebTool);
         newWebTool.connection();
+
+        SuperTool superTool = new SuperToolImpl();
+        superTool.doAction();
+        superTool.cancelAction();
     }
     @Subscribe
     public void onEventMainThread(TestMessage testMessage){
