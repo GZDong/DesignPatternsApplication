@@ -13,6 +13,8 @@ import com.gzd.example.designpatternsapplication.adapter.ResClass;
 import com.gzd.example.designpatternsapplication.observer.Observale;
 import com.gzd.example.designpatternsapplication.observer.Observer;
 import com.gzd.example.designpatternsapplication.observer.RealObserver;
+import com.gzd.example.designpatternsapplication.wrapper.NewWebTool;
+import com.gzd.example.designpatternsapplication.wrapper.OldWebTool;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -51,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setAdapter(adatper);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        OldWebTool oldWebTool = new OldWebTool();
+        oldWebTool.connection();
+
+        NewWebTool newWebTool = new NewWebTool(oldWebTool);
+        newWebTool.connection();
     }
     @Subscribe
     public void onEventMainThread(TestMessage testMessage){
